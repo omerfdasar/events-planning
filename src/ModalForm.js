@@ -1,6 +1,7 @@
-import { Button, Form, Input, Modal, Radio, DatePicker, Select } from "antd";
+import { Button, Form, Input, Modal, DatePicker, Select } from "antd";
 import React, { useState } from "react";
 import "antd/dist/antd.css";
+import moment from "moment";
 const { Option } = Select;
 const { TextArea } = Input;
 
@@ -29,7 +30,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
         form={form}
         layout="vertical"
         name="form_in_modal"
-        initialValues={{
+        initialvalues={{
           modifier: "public",
         }}
       >
@@ -39,7 +40,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
           rules={[
             {
               required: true,
-              message: "Please input the title of collection!",
+              message: "Please type title of collection!",
             },
           ]}
         >
@@ -51,11 +52,11 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
           rules={[
             {
               required: true,
-              message: "Please input the type",
+              message: "Please select a type",
             },
           ]}
         >
-          <Select defaultValue="Option1">
+          <Select initialvalues="generic">
             <Option value="generic">Generic</Option>
             <Option value="holiday">Holiday</Option>
           </Select>
@@ -67,7 +68,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
           rules={[
             {
               required: true,
-              message: "Please input the date",
+              message: "Please type date",
             },
           ]}
         >
@@ -85,11 +86,22 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
   );
 };
 
-const App = () => {
+const App = ({ addEvents }) => {
   const [visible, setVisible] = useState(false);
 
   const onCreate = (values) => {
     console.log("Received values of form: ", values);
+
+    console.log(moment(values.Date[0]).format("YYYY-MM-DD"));
+    let newEvent = {
+      title: values.title,
+      type: values.Type,
+      startDate: moment(values.Date[0]).format("YYYY-MM-DD"),
+      endDate: moment(values.Date[1]).format("YYYY-MM-DD"),
+      description: values.Description,
+    };
+
+    addEvents(newEvent);
     setVisible(false);
   };
 

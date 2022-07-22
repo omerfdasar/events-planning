@@ -1,0 +1,203 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Start of the year",
+      "type": "generic",
+      "startDate": "2022-01-01",
+      "endDate": "2022-12-01",
+      "description": "This is an event about the start of this year"
+    },
+    {
+      "id": "2",
+      "title": "Mediagenix holiday",
+      "type": "holiday",
+      "startDate": "2022-04-04",
+      "endDate": "2022-04-05",
+      "description": "Celebrating Mediagenixx"
+    },
+    {
+      "id": "3",
+      "title": "React Conference Brussels",
+      "type": "generic",
+      "startDate": "2022-07-04",
+      "endDate": "2022-07-05",
+      "description": "Sofware Development Conference"
+    },
+    {
+      "id": "4",
+      "title": "Belgian  National Holiday",
+      "type": "holiday",
+      "startDate": "2022-07-21",
+      "endDate": "2022-08-22",
+      "description": "National holiday of Belgium commemorated annually on 21 July"
+    },
+    {
+      "id": "5",
+      "title": "Tomorrowland",
+      "type": "generic",
+      "startDate": "2022-07-15",
+      "endDate": "2022-07-32",
+      "description": "electronic dance music festival held in Boom"
+    },
+    {
+      "title": "Ostend Beer Fest",
+      "type": "generic",
+      "startDate": "2022-10-10",
+      "endDate": "2022-11-11",
+      "description": "To the OSTEND\n",
+      "id": "EL-POzo"
+    },
+    {
+      "title": "bam bam",
+      "type": "holiday",
+      "startDate": "2022-10-10",
+      "endDate": "2022-11-11",
+      "description": "bam bam bam",
+      "id": "2EuiSSu"
+    },
+    {
+      "title": "omer",
+      "type": "holiday",
+      "startDate": "2022-07-28",
+      "endDate": "2022-07-30",
+      "description": "bbbb",
+      "id": "MiDvhkS"
+    },
+    {
+      "title": "sssssssssss",
+      "type": "generic",
+      "startDate": "2022-07-05",
+      "endDate": "2022-08-13",
+      "id": "Ank4"
+    },
+    {
+      "title": "asdasd",
+      "type": "holiday",
+      "startDate": "2022-07-12",
+      "endDate": "2022-08-26",
+      "id": "NlsAD"
+    },
+    {
+      "title": "sssssssssss",
+      "type": "generic",
+      "startDate": "2022-07-05",
+      "endDate": "2022-08-13",
+      "id": "gnk4KR"
+    },
+    {
+      "title": "asdasd",
+      "type": "holiday",
+      "startDate": "2022-07-12",
+      "endDate": "2022-08-26",
+      "id": "VAD"
+    },
+    {
+      "title": "sssssssssss",
+      "type": "generic",
+      "startDate": "2022-07-05",
+      "endDate": "2022-08-13",
+      "id": "gAnk4"
+    },
+    {
+      "title": "asdasd",
+      "type": "holiday",
+      "startDate": "2022-07-12",
+      "endDate": "2022-08-26",
+      "id": "VKNls"
+    },
+    {
+      "title": "sssssssssss",
+      "type": "generic",
+      "startDate": "2022-07-05",
+      "endDate": "2022-08-13",
+      "id": "gAn4KR"
+    },
+    {
+      "title": "asdasd",
+      "type": "holiday",
+      "startDate": "2022-07-12",
+      "endDate": "2022-08-26",
+      "id": "VKsAD"
+    },
+    {
+      "title": "sssssssssss",
+      "type": "generic",
+      "startDate": "2022-07-05",
+      "endDate": "2022-08-13",
+      "id": "gA4KR"
+    },
+    {
+      "title": "qws",
+      "type": "holiday",
+      "startDate": "2022-07-19",
+      "endDate": "2022-08-24",
+      "id": "hd1E"
+    },
+    {
+      "title": "asd",
+      "type": "holiday",
+      "startDate": "2022-07-20",
+      "endDate": "2022-08-25",
+      "id": "t1KWCjd"
+    },
+    {
+      "title": "asdas",
+      "type": "holiday",
+      "startDate": "2022-06-28",
+      "endDate": "2022-07-05",
+      "id": "cnCcj4_"
+    },
+    {
+      "title": "asd",
+      "type": "generic",
+      "startDate": "2022-07-04",
+      "endDate": "2022-08-17",
+      "description": "asd",
+      "id": "KQjh3I2"
+    },
+    {
+      "title": "sssss",
+      "type": "generic",
+      "startDate": "2022-06-27",
+      "endDate": "2022-07-15",
+      "description": "asdasd",
+      "id": "mRc8mP2"
+    },
+    {
+      "title": "omerfarukdasar",
+      "type": "holiday",
+      "startDate": "2022-07-26",
+      "endDate": "2022-07-30",
+      "id": "F9Xf8DE"
+    },
+    {
+      "title": "iiiiiiaaaa",
+      "type": "holiday",
+      "startDate": "2022-06-28",
+      "endDate": "2022-07-04",
+      "id": "HNVABNe"
+    },
+    {
+      "title": "uuuuu",
+      "type": "holiday",
+      "startDate": "2022-06-28",
+      "endDate": "2022-07-06",
+      "id": "dREa3xk"
+    },
+    {
+      "title": "ttttttttt",
+      "type": "holiday",
+      "startDate": "2022-06-28",
+      "endDate": "2022-07-06",
+      "id": "_xJbw8J"
+    },
+    {
+      "title": "aa",
+      "type": "holiday",
+      "startDate": "2022-06-28",
+      "endDate": "2022-06-28",
+      "id": "B53ht6_"
+    }
+  ]
+}
