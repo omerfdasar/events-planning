@@ -69,22 +69,15 @@
       "type": "holiday",
       "startDate": "2022-07-12",
       "endDate": "2022-08-26",
-      "id": "NlsAD",
-      "key": "NlsAD"
-    },
-    {
-      "title": "asdasd",
-      "type": "holiday",
-      "startDate": "2022-07-12",
-      "endDate": "2022-08-26",
       "id": "VKsAD"
     },
     {
+      "id": "gA4KR",
       "title": "sssssssssss",
       "type": "generic",
       "startDate": "2022-07-05",
       "endDate": "2022-08-13",
-      "id": "gA4KR"
+      "description": "asdasdasdasdas"
     },
     {
       "title": "qws",

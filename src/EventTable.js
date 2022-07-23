@@ -1,17 +1,17 @@
 import { Table, Tag, message, Col, Row, Input } from "antd";
-import { useState, useEffect, useRef } from "react";
-import "antd/dist/antd.css";
+import { useState, useRef } from "react";
 import ModalForm from "./CreateForm";
 import { useQuery } from "@tanstack/react-query";
 import { DeleteOutlined } from "@ant-design/icons";
 import UpdateModalForm from "./UpdateForm";
+
 const EventTable = () => {
   const [eventData, setEventData] = useState([]);
 
   const [sortedInfo, setSortedInfo] = useState({});
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [searchKey, setSearchKey] = useState("");
-  const inputVal = useRef("");
+
+  const inputVal = useRef();
 
   const [pagination, setPagination] = useState({
     current: 1,
@@ -108,7 +108,7 @@ const EventTable = () => {
               <DeleteOutlined
                 onClick={() => {
                   console.log(record, "aaasdasdasdasdasd");
-                  onDeleteEvents(record.id);
+                  DeleteEvents(record.id);
                 }}
                 style={{ color: "red", marginLeft: 12 }}
               />
@@ -147,62 +147,63 @@ const EventTable = () => {
   };
 
   const addEvents = async (newEvent) => {
-    // let updatedData = [...data];
-    // updatedData.push(newEvent);
-    // setData(updatedData);
-    const res = await fetch(baseURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newEvent),
-    });
-    await res.json();
-    // console.log(res);
-    refetch();
-    message.success("Event succesfully added");
+    try {
+      await fetch(baseURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEvent),
+      });
+      refetch();
+      message.success("Event succesfully added");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const onDeleteEvents = async (id) => {
-    const res = await fetch(baseURL + "/" + id, {
-      method: "DELETE",
-    }).then((res) => res.json());
-    console.log(id);
-    // fetchData({ pagination });
-    refetch();
-    message.success("Event succesfully deleted");
+  const DeleteEvents = async (id) => {
+    try {
+      await fetch(baseURL + "/" + id, {
+        method: "DELETE",
+      }).then((res) => res.json());
+      refetch();
+      message.success("Event succesfully deleted");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const editEvents = async (record) => {
-    console.log(record);
-    const res = await fetch(baseURL + "/" + record.id, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8", // Indicates the content
-      },
-      body: JSON.stringify(record), // We send data in JSON format
-    });
-    refetch();
+    try {
+      await fetch(baseURL + "/" + record.id, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8", // Indicates the content
+        },
+        body: JSON.stringify(record), // We send data in JSON format
+      });
+      refetch();
+      message.success("Event succesfully updated");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onSearch = (value) => {
-    let val = inputVal.current.input.value;
+    let searchKey = inputVal.current.input.value;
+    console.log(searchKey, "value");
 
-    console.log(val, "valie");
-    setSearchKey(inputVal.current.focus());
-    // if (value.length === 0) {
-    //   refetch();
-    // }
-    setFilteredEvents(
-      eventData.filter((item) =>
-        item.title.toLowerCase().includes(val.toLowerCase())
-      )
+    // useRef is used because useState works asychronously
+    const FilteredEventsREF = eventData.filter((item) =>
+      item.title.toLowerCase().includes(searchKey.toLowerCase())
     );
-    // if (filteredEvents.length == 0) {
-    // message.error(`There is not any event that contains ${value}`);
-    // }
-    console.log(filteredEvents);
-    // refetch();
+    setFilteredEvents(FilteredEventsREF);
+
+    if (FilteredEventsREF.length === 0) {
+      message.error(`There is not any event that contains ${searchKey}`);
+    }
+    // console.log(filteredEvents);
   };
 
   return (
@@ -216,14 +217,13 @@ const EventTable = () => {
             enterButton="Search"
             size="large"
             ref={inputVal}
-            onSearch={onSearch}
+            onChange={onSearch}
           />
         </Col>
         <Col span={6} offset={12}>
           {error && <ModalForm addEvents={addEvents} />}
         </Col>
       </Row>
-
       <Table
         columns={columns}
         dataSource={filteredEvents.length ? filteredEvents : eventData}
@@ -234,9 +234,4 @@ const EventTable = () => {
     </>
   );
 };
-
 export default EventTable;
-
-// search bar
-// edit
-// design

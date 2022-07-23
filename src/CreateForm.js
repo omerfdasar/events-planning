@@ -1,6 +1,5 @@
 import { Button, Form, Input, Modal, DatePicker, Select } from "antd";
 import React, { useState } from "react";
-import "antd/dist/antd.css";
 import moment from "moment";
 const { Option } = Select;
 const { TextArea } = Input;
@@ -86,9 +85,8 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
   );
 };
 
-const ModalForm = ({ addEvents}) => {
+const ModalForm = ({ addEvents }) => {
   const [visible, setVisible] = useState(false);
-
 
   const onCreate = (values) => {
     console.log("Received values of form: ", values);
@@ -104,7 +102,6 @@ const ModalForm = ({ addEvents}) => {
     addEvents(newEvent);
     setVisible(false);
   };
-
 
   return (
     <div>

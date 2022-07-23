@@ -1,7 +1,6 @@
-import { Form, Input, Modal, DatePicker, Select } from "antd";
+import { Input, Modal, DatePicker, Select,Form } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import "antd/dist/antd.css";
 import moment from "moment";
 const { Option } = Select;
 const { TextArea } = Input;
