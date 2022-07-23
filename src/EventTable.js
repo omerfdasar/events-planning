@@ -1,15 +1,17 @@
 import { Table, Tag, message, Col, Row, Input } from "antd";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "antd/dist/antd.css";
-import ModalForm from "./ModalForm";
+import ModalForm from "./CreateForm";
 import { useQuery } from "@tanstack/react-query";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-
+import { DeleteOutlined } from "@ant-design/icons";
+import UpdateModalForm from "./UpdateForm";
 const EventTable = () => {
   const [eventData, setEventData] = useState([]);
 
   const [sortedInfo, setSortedInfo] = useState({});
+  const [filteredEvents, setFilteredEvents] = useState([]);
   const [searchKey, setSearchKey] = useState("");
+  const inputVal = useRef("");
 
   const [pagination, setPagination] = useState({
     current: 1,
@@ -50,7 +52,7 @@ const EventTable = () => {
         }
         return (
           <Tag color={color} key={type}>
-            {type.toUpperCase()}
+            {type?.toUpperCase()}
           </Tag>
         );
       },
@@ -92,37 +94,31 @@ const EventTable = () => {
       title: "Actions",
       render: (record) => {
         return (
-          <>
-            <EditOutlined
-              onClick={() => {
-                // onEditStudent(record);
-              }}
-            />
-            <DeleteOutlined
-              onClick={() => {
-                console.log(record, "aaasdasdasdasdasd");
-                onDeleteEvents(record.id);
-              }}
-              style={{ color: "red", marginLeft: 12 }}
-            />
-          </>
+          <Row>
+            <Col span={1}>
+              <UpdateModalForm
+                record={record}
+                editEvents={editEvents}
+                onClick={() => {
+                  return console.log(record);
+                }}
+              />
+            </Col>
+            <Col span={1}>
+              <DeleteOutlined
+                onClick={() => {
+                  console.log(record, "aaasdasdasdasdasd");
+                  onDeleteEvents(record.id);
+                }}
+                style={{ color: "red", marginLeft: 12 }}
+              />
+            </Col>
+          </Row>
         );
       },
     },
   ];
-
-  const success = () => {
-    message.success("This is a success message");
-  };
-
   const baseURL = "http://localhost:5000/events";
-
-  // const sortByField = (a, b, field) => {
-  //   let unsortedData = data;
-  //   unsortedData.sort((a, b) => {
-  //     return a[field] - b[field];
-  //   });
-  // };
 
   const fetchData = async () => {
     await fetch(baseURL)
@@ -137,13 +133,13 @@ const EventTable = () => {
         });
       });
   };
+
   const { isLoading, error, refetch } = useQuery(
-    ["eventQuery", eventData],
+    ["eventQuery", eventData, filteredEvents],
     fetchData
   );
 
   const handleTableChange = (pagination, filters, sorter, extra) => {
-    // fetchData();
     console.log(sorter);
     console.log(pagination);
     console.log(extra);
@@ -151,11 +147,9 @@ const EventTable = () => {
   };
 
   const addEvents = async (newEvent) => {
-    // ADD TOASTIFY
     // let updatedData = [...data];
     // updatedData.push(newEvent);
     // setData(updatedData);
-
     const res = await fetch(baseURL, {
       method: "POST",
       headers: {
@@ -164,7 +158,7 @@ const EventTable = () => {
       body: JSON.stringify(newEvent),
     });
     await res.json();
-    console.log(res);
+    // console.log(res);
     refetch();
     message.success("Event succesfully added");
   };
@@ -179,31 +173,60 @@ const EventTable = () => {
     message.success("Event succesfully deleted");
   };
 
+  const editEvents = async (record) => {
+    console.log(record);
+    const res = await fetch(baseURL + "/" + record.id, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8", // Indicates the content
+      },
+      body: JSON.stringify(record), // We send data in JSON format
+    });
+    refetch();
+  };
+
   const onSearch = (value) => {
-    console.log(value);
+    let val = inputVal.current.input.value;
+
+    console.log(val, "valie");
+    setSearchKey(inputVal.current.focus());
+    // if (value.length === 0) {
+    //   refetch();
+    // }
+    setFilteredEvents(
+      eventData.filter((item) =>
+        item.title.toLowerCase().includes(val.toLowerCase())
+      )
+    );
+    // if (filteredEvents.length == 0) {
+    // message.error(`There is not any event that contains ${value}`);
+    // }
+    console.log(filteredEvents);
+    // refetch();
   };
 
   return (
     <>
-      <Row align="middle" justify="end" style={{ padding: "20px" }}>
-        <Col span={12}>
+      <Row align="middle" justify="center" style={{ padding: "20px" }}>
+        <Col span={6}>
           {" "}
           <Input.Search
-            placeholder="input search text"
+            placeholder="Search an event"
             allowClear
             enterButton="Search"
             size="large"
+            ref={inputVal}
             onSearch={onSearch}
           />
         </Col>
-        <Col span={6} offset={18}>
+        <Col span={6} offset={12}>
           {error && <ModalForm addEvents={addEvents} />}
         </Col>
       </Row>
 
       <Table
         columns={columns}
-        dataSource={eventData}
+        dataSource={filteredEvents.length ? filteredEvents : eventData}
         pagination={pagination}
         loading={isLoading}
         onChange={handleTableChange}

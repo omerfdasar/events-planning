@@ -86,13 +86,13 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
   );
 };
 
-const App = ({ addEvents }) => {
+const ModalForm = ({ addEvents}) => {
   const [visible, setVisible] = useState(false);
+
 
   const onCreate = (values) => {
     console.log("Received values of form: ", values);
 
-    console.log(moment(values.Date[0]).format("YYYY-MM-DD"));
     let newEvent = {
       title: values.title,
       type: values.Type,
@@ -104,6 +104,7 @@ const App = ({ addEvents }) => {
     addEvents(newEvent);
     setVisible(false);
   };
+
 
   return (
     <div>
@@ -126,4 +127,4 @@ const App = ({ addEvents }) => {
   );
 };
 
-export default App;
+export default ModalForm;
