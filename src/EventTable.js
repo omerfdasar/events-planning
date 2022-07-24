@@ -1,14 +1,13 @@
 import { Table, Tag, message, Col, Row, Input } from "antd";
 import { useState, useRef } from "react";
-import ModalForm from "./CreateForm";
+import CreateModal from "./CreateModal";
 import { useQuery } from "@tanstack/react-query";
 import { DeleteOutlined } from "@ant-design/icons";
-import UpdateModalForm from "./UpdateForm";
+import UpdateModal from "./UpdateModal";
 
 const EventTable = () => {
   const [eventData, setEventData] = useState([]);
   const [filteredEventData, setFilteredEventData] = useState([]);
-
   const [sortedInfo, setSortedInfo] = useState({});
 
   const inputVal = useRef();
@@ -91,7 +90,7 @@ const EventTable = () => {
         return (
           <Row>
             <Col span={1}>
-              <UpdateModalForm
+              <UpdateModal
                 record={record}
                 editEvents={editEvents}
                 onClick={() => {
@@ -118,7 +117,7 @@ const EventTable = () => {
     setSortedInfo(sorter);
   };
 
-  const onSearch = () => {
+  const searchEvents = () => {
     let searchKey = inputVal.current.input.value;
 
     // useRef is used because useState works asychronously
@@ -155,7 +154,8 @@ const EventTable = () => {
   );
 
   //! CRUD operations
-  const addEvents = async (newEvent) => {
+
+  const createEvents = async (newEvent) => {
     try {
       await fetch(baseURL, {
         method: "POST",
@@ -209,11 +209,11 @@ const EventTable = () => {
             enterButton="Search"
             size="large"
             ref={inputVal}
-            onChange={onSearch}
+            onChange={searchEvents}
           />
         </Col>
         <Col span={6} offset={12}>
-          {error && <ModalForm addEvents={addEvents} />}
+          {error && <CreateModal createEvents={createEvents} />}
         </Col>
       </Row>
       <Table

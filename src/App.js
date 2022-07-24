@@ -1,4 +1,3 @@
-import "./App.css";
 import EventTable from "./EventTable";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "antd/dist/antd.min.css";

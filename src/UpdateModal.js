@@ -93,7 +93,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel, record }) => {
   );
 };
 
-const UpdateForm = ({ editEvents, record }) => {
+const UpdateModal = ({ editEvents, record }) => {
   const [visible, setVisible] = useState(false);
 
   const onCreate = (values) => {
@@ -132,4 +132,4 @@ const UpdateForm = ({ editEvents, record }) => {
   );
 };
 
-export default UpdateForm;
+export default UpdateModal;

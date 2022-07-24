@@ -63,6 +63,28 @@
       "startDate": "2022-07-21",
       "endDate": "2022-09-01",
       "description": "A great movie by Marvel!!"
+    },
+    {
+      "title": "Event1",
+      "type": "generic",
+      "startDate": "2022-08-24",
+      "endDate": "2022-09-05",
+      "id": "JdHSSsO"
+    },
+    {
+      "id": "jNDq6eQ",
+      "title": "sdfsdfdsf",
+      "type": "generic",
+      "startDate": "2022-07-19",
+      "endDate": "2022-08-23",
+      "description": "asdasdas"
+    },
+    {
+      "title": "fgfgfgf",
+      "type": "holiday",
+      "startDate": "2022-07-27",
+      "endDate": "2022-08-11",
+      "id": "2Y347AN"
     }
   ]
 }
