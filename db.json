@@ -41,122 +41,12 @@
       "description": "electronic dance music festival held in Boom"
     },
     {
+      "id": "EL-POzo",
       "title": "Ostend Beer Fest",
       "type": "generic",
       "startDate": "2022-10-10",
       "endDate": "2022-11-11",
-      "description": "To the OSTEND\n",
-      "id": "EL-POzo"
-    },
-    {
-      "id": "2EuiSSu",
-      "title": "bam bam",
-      "type": "holiday",
-      "startDate": "2022-10-10",
-      "endDate": "2022-11-11",
-      "description": "bam bam bam ram"
-    },
-    {
-      "title": "omer",
-      "type": "holiday",
-      "startDate": "2022-07-28",
-      "endDate": "2022-07-30",
-      "description": "bbbb",
-      "id": "MiDvhkS"
-    },
-    {
-      "title": "asdasd",
-      "type": "holiday",
-      "startDate": "2022-07-12",
-      "endDate": "2022-08-26",
-      "id": "VKsAD"
-    },
-    {
-      "id": "gA4KR",
-      "title": "sssssssssss",
-      "type": "generic",
-      "startDate": "2022-07-05",
-      "endDate": "2022-08-13",
-      "description": "asdasdasdasdas"
-    },
-    {
-      "title": "qws",
-      "type": "holiday",
-      "startDate": "2022-07-19",
-      "endDate": "2022-08-24",
-      "id": "hd1E"
-    },
-    {
-      "title": "asd",
-      "type": "holiday",
-      "startDate": "2022-07-20",
-      "endDate": "2022-08-25",
-      "id": "t1KWCjd"
-    },
-    {
-      "title": "asdas",
-      "type": "holiday",
-      "startDate": "2022-06-28",
-      "endDate": "2022-07-05",
-      "id": "cnCcj4_"
-    },
-    {
-      "title": "asd",
-      "type": "generic",
-      "startDate": "2022-07-04",
-      "endDate": "2022-08-17",
-      "description": "asd",
-      "id": "KQjh3I2"
-    },
-    {
-      "title": "sssss",
-      "type": "generic",
-      "startDate": "2022-06-27",
-      "endDate": "2022-07-15",
-      "description": "asdasd",
-      "id": "mRc8mP2"
-    },
-    {
-      "title": "omerfarukdasar",
-      "type": "holiday",
-      "startDate": "2022-07-26",
-      "endDate": "2022-07-30",
-      "id": "F9Xf8DE"
-    },
-    {
-      "title": "iiiiiiaaaa",
-      "type": "holiday",
-      "startDate": "2022-06-28",
-      "endDate": "2022-07-04",
-      "id": "HNVABNe"
-    },
-    {
-      "title": "uuuuu",
-      "type": "holiday",
-      "startDate": "2022-06-28",
-      "endDate": "2022-07-06",
-      "id": "dREa3xk"
-    },
-    {
-      "title": "ttttttttt",
-      "type": "holiday",
-      "startDate": "2022-06-28",
-      "endDate": "2022-07-06",
-      "id": "_xJbw8J"
-    },
-    {
-      "title": "aa",
-      "type": "holiday",
-      "startDate": "2022-06-28",
-      "endDate": "2022-06-28",
-      "id": "B53ht6_"
-    },
-    {
-      "title": "as",
-      "type": "holiday",
-      "startDate": "2022-07-26",
-      "endDate": "2022-08-31",
-      "id": "JUMoI0Q"
+      "description": "To the OSTEND !!!!"
     },
     {
       "title": "Tea Party",
@@ -165,6 +55,14 @@
       "endDate": "2022-08-05",
       "description": "Tea Party with the people",
       "id": "uF5ZuZ4"
+    },
+    {
+      "id": "WFhvNcB",
+      "title": "Movie",
+      "type": "holiday",
+      "startDate": "2022-07-21",
+      "endDate": "2022-09-01",
+      "description": "A great movie by Marvel!!"
     }
   ]
 }

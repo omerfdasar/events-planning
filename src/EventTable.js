@@ -7,9 +7,9 @@ import UpdateModalForm from "./UpdateForm";
 
 const EventTable = () => {
   const [eventData, setEventData] = useState([]);
+  const [filteredEventData, setFilteredEventData] = useState([]);
 
   const [sortedInfo, setSortedInfo] = useState({});
-  const [filteredEvents, setFilteredEvents] = useState([]);
 
   const inputVal = useRef();
 
@@ -21,7 +21,6 @@ const EventTable = () => {
   const columns = [
     {
       title: "TITLE",
-      label: "Title",
       dataIndex: "title",
       key: "title",
       sorter: (a, b) => a.title.localeCompare(b.title),
@@ -30,7 +29,6 @@ const EventTable = () => {
     },
     {
       title: "TYPE",
-      label: "Type",
       options: [
         {
           label: "Generic",
@@ -62,7 +60,6 @@ const EventTable = () => {
     },
     {
       title: "START DATE",
-      label: "startDate",
       dataIndex: "startDate",
       key: "startDate",
       sorter: (a, b) => a.startDate.localeCompare(b.startDate),
@@ -71,7 +68,6 @@ const EventTable = () => {
     },
     {
       title: "END DATE",
-      label: "endDate",
       dataIndex: "endDate",
       key: "endDate",
       sorter: (a, b) => a.endDate.localeCompare(b.endDate),
@@ -80,7 +76,6 @@ const EventTable = () => {
     },
     {
       title: "DESCRIPTION",
-      label: "Description",
       dataIndex: "description",
       key: "description",
       sorter: (a, b) =>
@@ -108,7 +103,7 @@ const EventTable = () => {
               <DeleteOutlined
                 onClick={() => {
                   console.log(record, "aaasdasdasdasdasd");
-                  DeleteEvents(record.id);
+                  deleteEvents(record.id);
                 }}
                 style={{ color: "red", marginLeft: 12 }}
               />
@@ -118,6 +113,26 @@ const EventTable = () => {
       },
     },
   ];
+
+  const handleTableChange = (pagination, filters, sorter, extra) => {
+    setSortedInfo(sorter);
+  };
+
+  const onSearch = () => {
+    let searchKey = inputVal.current.input.value;
+
+    // useRef is used because useState works asychronously
+    const FilteredEventsREF = eventData.filter((item) =>
+      item.title.toLowerCase().includes(searchKey.toLowerCase())
+    );
+    setFilteredEventData(FilteredEventsREF);
+
+    if (FilteredEventsREF.length === 0) {
+      message.error(`There is not any event that contains ${searchKey}`);
+    }
+  };
+
+  //! Fetching Data
   const baseURL = "http://localhost:5000/events";
 
   const fetchData = async () => {
@@ -135,17 +150,11 @@ const EventTable = () => {
   };
 
   const { isLoading, error, refetch } = useQuery(
-    ["eventQuery", eventData, filteredEvents],
+    ["eventQuery", eventData, filteredEventData],
     fetchData
   );
 
-  const handleTableChange = (pagination, filters, sorter, extra) => {
-    console.log(sorter);
-    console.log(pagination);
-    console.log(extra);
-    setSortedInfo(sorter);
-  };
-
+  //! CRUD operations
   const addEvents = async (newEvent) => {
     try {
       await fetch(baseURL, {
@@ -162,7 +171,7 @@ const EventTable = () => {
     }
   };
 
-  const DeleteEvents = async (id) => {
+  const deleteEvents = async (id) => {
     try {
       await fetch(baseURL + "/" + id, {
         method: "DELETE",
@@ -179,9 +188,9 @@ const EventTable = () => {
       await fetch(baseURL + "/" + record.id, {
         method: "PUT",
         headers: {
-          "Content-type": "application/json; charset=UTF-8", // Indicates the content
+          "Content-type": "application/json; charset=UTF-8",
         },
-        body: JSON.stringify(record), // We send data in JSON format
+        body: JSON.stringify(record),
       });
       refetch();
       message.success("Event succesfully updated");
@@ -190,27 +199,10 @@ const EventTable = () => {
     }
   };
 
-  const onSearch = (value) => {
-    let searchKey = inputVal.current.input.value;
-    console.log(searchKey, "value");
-
-    // useRef is used because useState works asychronously
-    const FilteredEventsREF = eventData.filter((item) =>
-      item.title.toLowerCase().includes(searchKey.toLowerCase())
-    );
-    setFilteredEvents(FilteredEventsREF);
-
-    if (FilteredEventsREF.length === 0) {
-      message.error(`There is not any event that contains ${searchKey}`);
-    }
-    // console.log(filteredEvents);
-  };
-
   return (
     <>
       <Row align="middle" justify="center" style={{ padding: "20px" }}>
         <Col span={6}>
-          {" "}
           <Input.Search
             placeholder="Search an event"
             allowClear
@@ -226,7 +218,7 @@ const EventTable = () => {
       </Row>
       <Table
         columns={columns}
-        dataSource={filteredEvents.length ? filteredEvents : eventData}
+        dataSource={filteredEventData.length ? filteredEventData : eventData}
         pagination={pagination}
         loading={isLoading}
         onChange={handleTableChange}
