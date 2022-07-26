@@ -1,22 +1,21 @@
-import { Table, Tag, message, Col, Row, Input } from "antd";
 import { useState, useRef } from "react";
-import CreateModal from "./CreateModal";
 import { useQuery } from "@tanstack/react-query";
+import { Table, Tag, message, Col, Row, Input } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import UpdateModal from "./UpdateModal";
 import moment from "moment";
+import CreateModal from "./CreateModal";
+import UpdateModal from "./UpdateModal";
 
 const EventTable = () => {
   const [eventData, setEventData] = useState([]);
   const [filteredEventData, setFilteredEventData] = useState([]);
   const [sortedInfo, setSortedInfo] = useState({});
-
-  const inputVal = useRef();
-
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 5,
   });
+
+  const inputVal = useRef();
 
   const columns = [
     {
@@ -105,24 +104,6 @@ const EventTable = () => {
     },
   ];
 
-  const handleTableChange = (pagination, filters, sorter, extra) => {
-    setSortedInfo(sorter);
-  };
-
-  const searchEvents = () => {
-    let searchKey = inputVal.current.input.value;
-
-    // useRef is used because useState works asychronously
-    const FilteredEventsREF = eventData.filter((item) =>
-      item.title.toLowerCase().includes(searchKey.toLowerCase())
-    );
-    setFilteredEventData(FilteredEventsREF);
-
-    if (FilteredEventsREF.length === 0) {
-      message.error(`There is not any event that contains ${searchKey}`);
-    }
-  };
-
   //! Fetching Data
   const baseURL = "http://localhost:5000/events";
 
@@ -146,7 +127,7 @@ const EventTable = () => {
   );
 
   //! CRUD operations
-
+  
   const createEvents = async (newEvent) => {
     try {
       await fetch(baseURL, {
@@ -188,6 +169,24 @@ const EventTable = () => {
       message.success("Event succesfully updated");
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleTableChange = (pagination, filters, sorter, extra) => {
+    setSortedInfo(sorter);
+  };
+
+  const searchEvents = () => {
+    let searchKey = inputVal.current.input.value;
+
+    // useRef is used because useState works asychronously
+    const FilteredEventsREF = eventData.filter((item) =>
+      item.title.toLowerCase().includes(searchKey.toLowerCase())
+    );
+    setFilteredEventData(FilteredEventsREF);
+
+    if (FilteredEventsREF.length === 0) {
+      message.error(`There is not any event that contains ${searchKey}`);
     }
   };
 
