@@ -1,4 +1,4 @@
-import { Input, Modal, DatePicker, Select,Form } from "antd";
+import { Input, Modal, DatePicker, Select, Form } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import moment from "moment";
@@ -7,6 +7,7 @@ const { TextArea } = Input;
 
 const CollectionCreateForm = ({ visible, onCreate, onCancel, record }) => {
   const [form] = Form.useForm();
+  console.log(record);
   return (
     <Modal
       visible={visible}

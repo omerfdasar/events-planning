@@ -43,7 +43,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
             },
           ]}
         >
-          <Input /* showCount maxLength={50} */ />
+          <Input />
         </Form.Item>
         <Form.Item
           name="Type"
@@ -55,7 +55,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
             },
           ]}
         >
-          <Select initialvalues="generic">
+          <Select>
             <Option value="generic">Generic</Option>
             <Option value="holiday">Holiday</Option>
           </Select>
@@ -85,7 +85,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
   );
 };
 
-const CreateForm = ({ addEvents }) => {
+const CreateForm = ({ createEvents }) => {
   const [visible, setVisible] = useState(false);
 
   const onCreate = (values) => {
@@ -99,7 +99,7 @@ const CreateForm = ({ addEvents }) => {
       description: values.Description,
     };
 
-    addEvents(newEvent);
+    createEvents(newEvent);
     setVisible(false);
   };
 

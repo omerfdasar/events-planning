@@ -4,6 +4,7 @@ import CreateModal from "./CreateModal";
 import { useQuery } from "@tanstack/react-query";
 import { DeleteOutlined } from "@ant-design/icons";
 import UpdateModal from "./UpdateModal";
+import moment from "moment";
 
 const EventTable = () => {
   const [eventData, setEventData] = useState([]);
@@ -28,16 +29,6 @@ const EventTable = () => {
     },
     {
       title: "TYPE",
-      options: [
-        {
-          label: "Generic",
-          value: "generic",
-        },
-        {
-          label: "Holiday",
-          value: "holiday",
-        },
-      ],
       dataIndex: "type",
       key: "type",
       render: (type) => {
@@ -55,13 +46,18 @@ const EventTable = () => {
       },
       sorter: (a, b) => a.type.localeCompare(b.type),
       sortOrder: sortedInfo.columnKey === "type" ? sortedInfo.order : null,
-      ellipsis: true,
     },
     {
       title: "START DATE",
       dataIndex: "startDate",
       key: "startDate",
-      sorter: (a, b) => a.startDate.localeCompare(b.startDate),
+      render: (startDate) => {
+        return moment(startDate).format("DD-MM-YYYY");
+      },
+      sorter: (a, b) =>
+        moment(a.startDate)
+          .format("YYYY-MM-DD")
+          .localeCompare(moment(b.startDate).format("YYYY-MM-DD")),
       sortOrder: sortedInfo.columnKey === "startDate" ? sortedInfo.order : null,
       ellipsis: true,
     },
@@ -69,6 +65,9 @@ const EventTable = () => {
       title: "END DATE",
       dataIndex: "endDate",
       key: "endDate",
+      render: (endDate) => {
+        return moment(endDate).format("DD-MM-YYYY");
+      },
       sorter: (a, b) => a.endDate.localeCompare(b.endDate),
       sortOrder: sortedInfo.columnKey === "endDate" ? sortedInfo.order : null,
       ellipsis: true,
@@ -90,13 +89,7 @@ const EventTable = () => {
         return (
           <Row>
             <Col span={1}>
-              <UpdateModal
-                record={record}
-                editEvents={editEvents}
-                onClick={() => {
-                  return console.log(record);
-                }}
-              />
+              <UpdateModal record={record} editEvents={editEvents} />
             </Col>
             <Col span={1}>
               <DeleteOutlined
