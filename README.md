@@ -4,59 +4,59 @@ ant-design Editable Table
 
 ## Description
 
-It is an application that provides a table which you can read, add, updated and delete the information. 
+It is an application that provides a table which you can read, add, updated and delete the information.
 
-Data is sortable as ascending and descending. 
+Data is sortable as ascending and descending.
 
 Application give reaction to adding, deleting and updating information with message bubbles.
 
-Events are searchable throgh search box. 
+Events are searchable throgh search box.
 
-The paginations is enabled. 
+The paginations is enabled.
 
 ## Basically Schema
 
 [
-    {
-      title: "TITLE",
-      dataIndex: "title",
-      sorter: (a, b) => a.title.localeCompare(b.title),
-    },
-    {
-      title: "TYPE",
-      dataIndex: "type",
-      sorter: (a, b) => a.type.localeCompare(b.type),
-    },
-    {
-      title: "START DATE",
-      dataIndex: "startDate",
-      sorter: (a, b) =>
-        moment(a.startDate)
-          .format("YYYY-MM-DD")
-          .localeCompare(moment(b.startDate).format("YYYY-MM-DD")),
-    },
-    {
-      title: "END DATE",
-      dataIndex: "endDate",
-      sorter: (a, b) => a.endDate.localeCompare(b.endDate),
-    },
-    {
-      title: "DESCRIPTION",
-      dataIndex: "description",
-      sorter: (a, b) =>
-        (a.description || "zz").localeCompare(b.description || "zzz"),
-    },
+{
+title: "TITLE",
+dataIndex: "title",
+sorter: (a, b) => a.title.localeCompare(b.title),
+},
+{
+title: "TYPE",
+dataIndex: "type",
+sorter: (a, b) => a.type.localeCompare(b.type),
+},
+{
+title: "START DATE",
+dataIndex: "startDate",
+sorter: (a, b) =>
+moment(a.startDate)
+.format("YYYY-MM-DD")
+.localeCompare(moment(b.startDate).format("YYYY-MM-DD")),
+},
+{
+title: "END DATE",
+dataIndex: "endDate",
+sorter: (a, b) => a.endDate.localeCompare(b.endDate),
+},
+{
+title: "DESCRIPTION",
+dataIndex: "description",
+sorter: (a, b) =>
+(a.description || "zz").localeCompare(b.description || "zzz"),
+},
 ];
 
 ## Data Sample
 
 {
-      "id": "1",
-      "title": "Start of the year",
-      "type": "generic",
-      "startDate": "2022-01-01",
-      "endDate": "2022-12-01",
-      "description": "This is an event about the start of this year"
+"id": "1",
+"title": "Start of the year",
+"type": "generic",
+"startDate": "2022-01-01",
+"endDate": "2022-12-01",
+"description": "This is an event about the start of this year"
 }
 
 ## Libraries that are used in this Project
@@ -73,10 +73,9 @@ The paginations is enabled.
 
 - React-query: https://react-query.tanstack.com/ used to do our API calls with React hooks
 
-- json-server: for full fake REST API
+- json-server: for full fake REST API(http://localhost:5000)
 
 - ReactJS
-
 
 # Getting Started with Create React App
 
