@@ -94,7 +94,6 @@ const EventTable = () => {
             <Col span={1}>
               <DeleteOutlined
                 onClick={() => {
-                  console.log(record, "aaasdasdasdasdasd");
                   deleteEvents(record.id);
                 }}
                 style={{ color: "red", marginLeft: 12 }}

@@ -21,7 +21,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
             onCreate(values);
           })
           .catch((info) => {
-            console.log("Validate Failed:", info);
+            console.error("Validate Failed:", info);
           });
       }}
     >
@@ -89,7 +89,6 @@ const CreateForm = ({ createEvents }) => {
   const [visible, setVisible] = useState(false);
 
   const onCreate = (values) => {
-    console.log("Received values of form: ", values);
 
     let newEvent = {
       title: values.title,

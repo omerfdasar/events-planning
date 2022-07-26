@@ -7,7 +7,6 @@ const { TextArea } = Input;
 
 const CollectionCreateForm = ({ visible, onCreate, onCancel, record }) => {
   const [form] = Form.useForm();
-  console.log(record);
   return (
     <Modal
       visible={visible}
@@ -23,7 +22,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel, record }) => {
             onCreate(values);
           })
           .catch((info) => {
-            console.log("Validate Failed:", info);
+            console.error("Validate Failed:", info);
           });
       }}
     >
@@ -98,7 +97,6 @@ const UpdateModal = ({ editEvents, record }) => {
   const [visible, setVisible] = useState(false);
 
   const onCreate = (values) => {
-    console.log("Received values of form: ", values);
 
     let newEvent = {
       id: record.id,

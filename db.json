@@ -65,27 +65,34 @@
       "description": "A great movie by Marvel!!"
     },
     {
-      "title": "Event1",
-      "type": "generic",
-      "startDate": "2022-08-24",
-      "endDate": "2022-09-05",
-      "id": "JdHSSsO"
-    },
-    {
-      "title": "bbbbbbbb",
+      "title": "Berlin Film Festival",
       "type": "holiday",
-      "startDate": "2022-07-05",
-      "endDate": "2022-08-16",
-      "description": "asds",
-      "id": "3oNv7Gm"
+      "startDate": "2022-08-04",
+      "endDate": "2022-08-07",
+      "description": "Film Festival in Berlin.",
+      "id": "V5WYj_2"
     },
     {
-      "title": "cccccccc",
+      "title": "Competitor Holidays",
+      "type": "holiday",
+      "startDate": "2022-02-16",
+      "endDate": "2022-03-11",
+      "id": "sEZcFRs"
+    },
+    {
+      "title": "Matrix Movie",
       "type": "generic",
-      "startDate": "2022-07-20",
-      "endDate": "2022-08-24",
-      "description": "sdsdsd",
-      "id": "p0kV0wF"
+      "startDate": "2022-09-05",
+      "endDate": "2022-09-14",
+      "id": "jhl6Itk"
+    },
+    {
+      "title": "Labor Day",
+      "type": "holiday",
+      "startDate": "2022-05-01",
+      "endDate": "2022-05-02",
+      "description": "Labor Day Holiday",
+      "id": "wESLQ2p"
     }
   ]
 }
