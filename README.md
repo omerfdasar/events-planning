@@ -77,6 +77,9 @@ sorter: (a, b) =>
 
 - ReactJS
 
+![Ekran Alıntısı](https://user-images.githubusercontent.com/93737841/181373811-dce199c6-863c-4d6a-bc52-26b951caeabe.PNG)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
